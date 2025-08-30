@@ -2,8 +2,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../store/slices/authSlice.js";
 import { useState } from "react";
-import logoSvg from "../assets/logo.svg";
-<img src={logoSvg} alt="logo" className="h-7" />
+import logoSvg from "../assets/logo.svg"; // ✅ Keep this import
+
 export default function Navbar() {
   const { isAuthenticated, user } = useSelector((s) => s.auth);
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ export default function Navbar() {
     <header className="sticky top-0 z-40 bg-white/80 backdrop-blur border-b">
       <div className="container flex items-center justify-between py-3 gap-3">
         <Link to="/" className="flex items-center gap-2 font-bold text-lg">
-          <img src="/src/assets/logo.svg" alt="logo" className="h-7" />
+          <img src={logoSvg} alt="logo" className="h-7" /> {/* ✅ Use imported logo */}
           Devnovate Blog
         </Link>
         
@@ -61,4 +61,3 @@ export default function Navbar() {
     </header>
   );
 }
-
