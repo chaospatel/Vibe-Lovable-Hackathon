@@ -279,21 +279,3 @@ const authenticateToken = (req, res, next) => {
 3. Commit your changes: `git commit -am 'Add new feature'`
 4. Push to the branch: `git push origin feature/new-feature`
 5. Submit a pull request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 👥 Team
-
-- **Frontend Development**: React, Tailwind CSS, Context API
-- **UI/UX Design**: Modern, responsive interface design
-- **Project Architecture**: Component-based, scalable structure
-
-## 📞 Support
-
-For support, email yashbhati267@gmail.com or open an issue in the GitHub repository.
-
----
-
-**Built with ❤️ for the developer community by Devnovate**
