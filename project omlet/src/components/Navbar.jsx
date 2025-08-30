@@ -2,7 +2,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../store/slices/authSlice.js";
 import { useState } from "react";
-
+import logoSvg from "../assets/logo.svg";
+<img src={logoSvg} alt="logo" className="h-7" />
 export default function Navbar() {
   const { isAuthenticated, user } = useSelector((s) => s.auth);
   const dispatch = useDispatch();
@@ -13,7 +14,7 @@ export default function Navbar() {
     e.preventDefault();
     nav(`/search?q=${encodeURIComponent(q)}`);
   };
-  
+
   return (
     <header className="sticky top-0 z-40 bg-white/80 backdrop-blur border-b">
       <div className="container flex items-center justify-between py-3 gap-3">
@@ -60,3 +61,4 @@ export default function Navbar() {
     </header>
   );
 }
+
