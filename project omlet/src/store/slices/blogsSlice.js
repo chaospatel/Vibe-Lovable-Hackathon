@@ -2,8 +2,10 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import api from "../../api/axiosClient.js";
 export const fetchHome = createAsyncThunk("blogs/fetchHome", async ({ page = 1,
 q = "" } = {}) => {
-const { data } = await api.get(`/blogs?status=published&page=${page}&q=$
-{encodeURIComponent(q)}`);
+export const fetchHome = createAsyncThunk("blogs/fetchHome", async ({ page = 1, q = "" } = {}) => {
+  const { data } = await api.get(`/blogs?status=published&page=${page}&q=${encodeURIComponent(q)}`);
+  return data; // { items, total, trending }
+});
 return data; // { items, total, trending }
 });
 export const fetchBlog = createAsyncThunk("blogs/fetchBlog", async (id) => {
@@ -50,3 +52,4 @@ if (s.current?._id === payload.id) s.current.likes = payload.data.likes;
 }
 });
 export default blogsSlice.reducer;
+
