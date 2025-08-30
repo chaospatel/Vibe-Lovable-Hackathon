@@ -6,21 +6,25 @@ import { MarkdownRender } from "../utils/markdown.js";
 import LikeButton from "../components/LikeButton.jsx";
 import CommentList from "../components/CommentList.jsx";
 import CommentForm from "../components/CommentForm.jsx";
+import Loading from "../components/Loading.jsx";
 
 export default function BlogDetail() {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const { current } = useSelector((s) => s.blogs);
+  const { current, status, error } = useSelector((s) => s.blogs);
   
   useEffect(() => { 
     dispatch(fetchBlog(id)); 
   }, [dispatch, id]);
   
-  const postComment = () => {
-    /* TODO: call /blogs/:id/comments and then refetch */
+  const postComment = (body) => {
+    /* TODO: Implement comment posting */
+    console.log("Posting comment:", body);
   };
   
-  if (!current) return <div className="container py-10">Loading...</div>;
+  if (status === "loading") return <Loading />;
+  if (status === "failed") return <div className="container py-10 text-center text-red-600">Error: {error}</div>;
+  if (!current) return <div className="container py-10 text-center">Blog post not found</div>;
   
   return (
     <div className="container py-10 max-w-3xl">
