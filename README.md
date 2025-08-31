@@ -74,6 +74,7 @@ cd Vibe-Lovable-Hackathon
 
 2. **Install dependencies**
 ```bash
+npm install jsonwebtoken
 npm install
 ```
 
