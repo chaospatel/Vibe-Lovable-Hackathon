@@ -36,7 +36,7 @@ A modern, full-featured blogging platform built with the MERN stack (MongoDB, Ex
 ## 📁 Project Structure
 
 ```
-devnovate-blog-platform/
+Vibe-Lovable-Hackathon/
 ├── public/
 │   ├── index.html
 │   └── favicon.ico
