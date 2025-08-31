@@ -18,3 +18,5 @@ export const mockBlogs = [
     content: "Scalability is crucial for modern web applications, and Node.js provides excellent tools and patterns to achieve it. This article covers architectural patterns, database optimization, caching strategies, and deployment best practices. We'll explore microservices architecture, load balancing, and how to design APIs that can handle millions of requests. Learn how companies like Netflix and Uber scale their Node.js applications to serve millions of users worldwide.",
     author: "Jane Smith",
     authorId: "user2",
+  }
+]
