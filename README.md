@@ -69,7 +69,7 @@ devnovate-blog-platform/
 1. **Clone the repository**
 ```bash
 git clone https://github.com/your-username/devnovate-blog-platform.git
-cd devnovate-blog-platform
+cd Vibe-Lovable-Hackathon
 ```
 
 2. **Install dependencies**
