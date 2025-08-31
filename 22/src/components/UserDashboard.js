@@ -236,4 +236,78 @@ const UserDashboard = () => {
             className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             {categories.map(cat => (
-              <option key={cat} value={cat}>{cat}
+              <option key={cat} value={cat}>{cat}</option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Content</label>
+          <textarea
+            name="content"
+            value={newBlog.content}
+            onChange={handleInputChange}
+            className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Write your blog content..."
+            rows={8}
+            required
+          />
+        </div>
+        <button
+          type="submit"
+          className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold py-3 rounded-lg shadow-md hover:from-blue-700 hover:to-purple-700 transition-all"
+        >
+          Submit Blog
+        </button>
+      </form>
+    </div>
+  );
+
+  const renderProfile = () => (
+    <div className="space-y-8">
+      <h2 className="text-2xl font-bold text-gray-800 mb-6">My Blogs</h2>
+      <div className="grid gap-6">
+        {userBlogs.length === 0 ? (
+          <div className="text-gray-500">You haven't submitted any blogs yet.</div>
+        ) : (
+          userBlogs.map(blog => (
+            <div key={blog.id} className="bg-white rounded-lg shadow-sm p-6 border-l-4
+              {blog.status === 'pending' ? 'border-yellow-400' : blog.status === 'rejected' ? 'border-red-400' : 'border-green-400'}">
+              <div className="flex justify-between items-center mb-2">
+                <h3 className="text-xl font-semibold text-gray-800">{blog.title}</h3>
+                <span className={`px-3 py-1 rounded-full text-xs font-semibold
+                  ${blog.status === 'pending' ? 'bg-yellow-100 text-yellow-800' :
+                    blog.status === 'rejected' ? 'bg-red-100 text-red-800' :
+                    blog.status === 'published' ? 'bg-green-100 text-green-800' :
+                    'bg-gray-100 text-gray-800'}`}>
+                  {blog.status.charAt(0).toUpperCase() + blog.status.slice(1)}
+                </span>
+              </div>
+              <div className="text-gray-600 mb-2">{blog.content.substring(0, 150)}...</div>
+              <div className="flex items-center space-x-4 text-sm text-gray-500">
+                <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded">{blog.category}</span>
+                <span>{new Date(blog.createdAt).toLocaleDateString()}</span>
+                <span><Heart className="inline w-4 h-4 mr-1" />{blog.likes}</span>
+                <span><MessageCircle className="inline w-4 h-4 mr-1" />{blog.comments}</span>
+                <span><Eye className="inline w-4 h-4 mr-1" />{blog.views}</span>
+              </div>
+            </div>
+          ))
+        )}
+      </div>
+    </div>
+  );
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {renderNavbar()}
+      <main className="container mx-auto px-6 py-10">
+        {activeTab === 'home' && renderHome()}
+        {activeTab === 'trending' && renderTrending()}
+        {activeTab === 'create' && renderCreateBlog()}
+        {activeTab === 'profile' && renderProfile()}
+      </main>
+    </div>
+  );
+};
+// ...existing code...
+export default UserDashboard;
